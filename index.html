@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MangáNavi</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>MangáNavi</h1>
+        <p>Busque seus mangás favoritos!</p>
+    </header>
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Digite o nome do mangá..." oninput="searchManga()">
+        </div>
+        <div id="loader" style="display: none;">
+            <div class="spinner"></div>
+        </div>
+        <ul class="results" id="resultsList"></ul>
+    </div>
+</body>
+
+</html>
