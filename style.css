@@ -107,3 +107,55 @@
          transform: rotate(360deg);
      }
  }
+
+ .search-bar {
+     position: relative;
+     display: flex;
+     flex-direction: column;
+ }
+
+ #historyDropdown {
+     position: absolute;
+     top: 100%;
+     /* Faz com que a lista apareça abaixo do campo de entrada */
+     left: 0;
+     width: 100%;
+     background-color: white;
+     border: 1px solid #ccc;
+     border-top: none;
+     list-style: none;
+     padding: 0;
+     margin: 0;
+     display: none;
+     max-height: 200px;
+     overflow-y: auto;
+     z-index: 10;
+ }
+
+ #historyDropdown li {
+     padding: 8px;
+     cursor: pointer;
+ }
+
+ #historyDropdown li:hover {
+     background-color: #f0f0f0;
+ }
+
+ .autocomplete-dropdown {
+     position: absolute;
+     background-color: white;
+     border: 1px solid #ccc;
+     max-height: 150px;
+     overflow-y: auto;
+     z-index: 10;
+     width: 100%;
+ }
+
+ .autocomplete-suggestion {
+     padding: 10px;
+     cursor: pointer;
+ }
+
+ .autocomplete-suggestion:hover {
+     background-color: #f0f0f0;
+ }

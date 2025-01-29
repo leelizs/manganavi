@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MangáNavi</title>
     <link rel="stylesheet" href="style.css">
-    <script src="app.js"></script>
 </head>
 
 <body>
@@ -14,18 +13,23 @@
         <h1>MangáNavi</h1>
         <p>Busque seus mangás favoritos!</p>
     </header>
-    
-    <p>testando</p>
-    
+
     <div class="container">
         <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Digite o nome do mangá..." oninput="searchManga()">
+            <input type="text" id="searchInput" placeholder="Digite o nome do mangá..." oninput="searchManga()"
+                autocomplete="off">
+            <ul id="historyDropdown" class="dropdown"></ul>
+            <div id="autocompleteContainer" class="autocomplete-dropdown"></div>
         </div>
         <div id="loader" style="display: none;">
             <div class="spinner"></div>
         </div>
-        <ul class="results" id="resultsList"></ul>
     </div>
+
+    <ul class="results" id="resultsList"></ul>
+
+    <!-- Carregar o JavaScript após o conteúdo HTML -->
+    <script src="app.js"></script>
 </body>
 
 </html>
