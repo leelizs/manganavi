@@ -66,28 +66,67 @@ document.getElementById("searchInput").addEventListener("blur", () => {
 });
 
 // Mostrar o histórico completo quando o campo de pesquisa ganha foco
+// Função para mostrar o histórico quando o usuário clica no campo de pesquisa
 function showHistory() {
     const searchInput = document.getElementById("searchInput");
     const dropdown = document.getElementById("historyDropdown");
+    const clearButton = document.getElementById("clearHistoryButton");
     const history = getHistory();
 
-    // Mostrar todo o histórico ao clicar na barra de pesquisa
     dropdown.innerHTML = "";
-    history.forEach((item) => {
-        const li = document.createElement("li");
-        li.textContent = item;
-        li.addEventListener("click", () => {
-            searchInput.value = item;
-            searchManga();
-            dropdown.style.display = "none";
+
+    if (history.length > 0) {
+        history.forEach((item) => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            li.addEventListener("click", () => {
+                searchInput.value = item;
+                searchManga();
+                dropdown.style.display = "none";
+                clearButton.style.display = "none"; // Esconder botão ao selecionar um item
+            });
+            dropdown.appendChild(li);
         });
-        dropdown.appendChild(li);
-    });
-    dropdown.style.display = "block";
+
+        dropdown.style.display = "block";
+        clearButton.style.display = "block"; // Exibir botão somente quando histórico for mostrado
+    } else {
+        dropdown.style.display = "none";
+        clearButton.style.display = "none"; // Esconder botão se não houver histórico
+    }
 }
 
-// Restante do código de `searchManga()` permanece igual
+// Função para limpar o histórico
+function clearSearchHistory() {
+    localStorage.removeItem("searchHistory"); // Remove o histórico do localStorage
+    document.getElementById("historyDropdown").innerHTML = ""; // Limpa a lista visível
+    showHistory(); // Reexibe o histórico atualizado sem o botão
+}
 
+
+// Esconder o dropdown e o botão ao perder o foco
+document.getElementById("searchInput").addEventListener("blur", () => {
+    setTimeout(() => {
+        document.getElementById("historyDropdown").style.display = "none";
+        document.getElementById("clearHistoryButton").style.display = "none";
+    }, 200);
+});
+
+// Ao carregar a página, garantir que o botão NÃO apareça
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("clearHistoryButton").style.display = "none";
+});
+
+// Mostrar ou ocultar o botão de limpar histórico conforme necessário
+function updateClearHistoryButton() {
+    const history = getHistory();
+    const clearButton = document.getElementById("clearHistoryButton");
+    if (history.length > 0) {
+        clearButton.style.display = "block"; // Exibir botão se houver histórico
+    } else {
+        clearButton.style.display = "none"; // Esconder botão se não houver histórico
+    }
+}
 
 async function searchManga() {
     clearTimeout(debounceTimeout); // Limpa o timeout anterior
@@ -142,10 +181,10 @@ async function searchManga() {
             limitedResults.forEach(manga => {
                 const listItem = document.createElement("li");
                 listItem.innerHTML = `
-                    <strong>${manga.title}</strong><br>
-                    <em>${manga.authors.map(author => author.name).join(", ") || "Autor desconhecido"}</em><br>
-                    <p>${manga.synopsis || "Sem descrição disponível."}</p>
-                `;
+        <strong><a href="${manga.url}" target="_blank">${manga.title}</a></strong><br>
+        <em>${manga.authors.map(author => author.name).join(", ") || "Autor desconhecido"}</em><br>
+        <p>${manga.synopsis || "Sem descrição disponível."}</p>
+    `;
                 resultsList.appendChild(listItem);
             });
 
@@ -179,5 +218,5 @@ async function searchManga() {
             // Ocultar o loader após a busca
             loader.style.display = "none";
         }
-    }, 300); // 300ms de atraso
+    }, 2000); // 3000ms de atraso
 }
