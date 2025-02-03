@@ -1,249 +1,330 @@
- body {
-     font-family: Arial, sans-serif;
-     margin: 0;
-     padding: 0;
-     background-color: #f5f5f5;
- }
+body {
+    font-family: "Roboto", Arial, sans-serif !important;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
 
- header {
-     position: fixed;
-     top: 0;
-     left: 0;
-     width: 100%;
-     background-color: #6200ea;
-     color: white;
-     padding: 1rem;
-     text-align: center;
-     z-index: 1000;
-     height: 80px;
-     /* Ajusta a altura do header */
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
- }
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #6200ea;
+    color: white;
+    padding: 1rem 2rem;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
 
- header h1 {
-     font-size: 2rem;
-     /* Aumenta o tamanho do título */
-     font-weight: bold;
-     /* Deixa o título mais destacado */
-     margin: 0;
-     /* Remove margens padrão */
-     letter-spacing: 2px;
-     /* Adiciona espaçamento entre as letras */
-     text-transform: uppercase;
-     /* Deixa o título em maiúsculas */
-     cursor: pointer;
- }
+.header-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
- header p {
-     font-size: 1rem;
-     /* Ajusta o tamanho do subtítulo */
-     margin: 5px 0 0 0;
-     /* Mantém ele próximo ao h1 */
-     font-style: italic;
-     /* Dá um toque diferenciado */
-     opacity: 0.9;
-     /* Deixa um efeito sutil */
- }
+header h1 {
+    font-size: 2rem;
+    /* Aumenta o tamanho do título */
+    font-weight: bold;
+    /* Deixa o título mais destacado */
+    margin: 0;
+    /* Remove margens padrão */
+    letter-spacing: 2px;
+    /* Adiciona espaçamento entre as letras */
+    text-transform: uppercase;
+    /* Deixa o título em maiúsculas */
+    cursor: pointer;
+}
 
- .container {
-     margin-top: 120px;
-     /* Ajusta para evitar sobreposição do conteúdo */
-     padding: 1rem;
-     max-width: 800px;
-     margin-left: auto;
-     margin-right: auto;
- }
+header p {
+    font-size: 1rem;
+    /* Ajusta o tamanho do subtítulo */
+    margin: 5px 0 0 0;
+    /* Mantém ele próximo ao h1 */
+    font-style: italic;
+    /* Dá um toque diferenciado */
+    opacity: 0.9;
+    /* Deixa um efeito sutil */
+}
 
- .search-bar {
-     display: flex;
-     align-items: center;
-     gap: 0.5rem;
-     /* Espaço entre input e botão */
-     padding: 0.5rem;
-     background-color: white;
-     border: 1px solid #ddd;
-     border-radius: 4px;
-     box-shadow: 0 2px 5px white;
-     width: 100%;
-     max-width: 800px;
-     margin-bottom: 1rem;
- }
+.header-left {
+    text-align: center;
+    flex-grow: 1;
+}
 
- .search-bar input {
-     flex: 1;
-     padding: 0.5rem;
-     border: none;
-     outline: none;
-     font-size: 1rem;
- }
+#loginButton {
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
- .search-button {
-     background-color: #6200ea;
-     /* Cor do botão */
-     border: none;
-     padding: 8px 12px;
-     border-radius: 4px;
-     cursor: pointer;
-     transition: 0.3s;
- }
+#loginButton:hover {
+    background-color: #4b00b5;
+}
 
- .search-button i {
-     font-size: 1.2rem;
-     color: white;
-     /* Ícone branco para contraste */
- }
+.container {
+    margin-top: 120px;
+    /* Ajusta para evitar sobreposição do conteúdo */
+    padding: 1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
- .search-button:hover {
-     background-color: #4b00b5;
-     /* Efeito hover no botão */
- }
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* Espaço entre input e botão */
+    padding: 0.5rem;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px white;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 1rem;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.search-button {
+    background-color: #6200ea;
+    /* Cor do botão */
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-button i {
+    font-size: 1.2rem;
+    color: white;
+    /* Ícone branco para contraste */
+}
+
+.search-button:hover {
+    background-color: #4b00b5;
+    /* Efeito hover no botão */
+}
 
 
- .results {
-     list-style: none;
-     padding: 0;
- }
+.results {
+    list-style: none;
+    padding: 0;
+}
 
- .results li {
-     background: white;
-     margin: 0.5rem 0;
-     padding: 1rem;
-     border: 1px solid #ddd;
-     border-radius: 4px;
-     transition: box-shadow 0.3s ease;
- }
+.results li {
+    background: white;
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: box-shadow 0.3s ease;
+}
 
- .results li:hover {
-     box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
- }
+.results li:hover {
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
 
- .view-more-button {
-     background-color: #6200ea;
-     /* Verde agradável */
-     color: white;
-     border: none;
-     border-radius: 5px;
-     padding: 10px 20px;
-     font-size: 14px;
-     font-weight: bold;
-     cursor: pointer;
-     transition: background-color 0.3s ease;
-     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
- }
+.view-more-button {
+    background-color: #6200ea;
+    /* Verde agradável */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
 
- .view-more-button:hover {
-     background-color: #6200ea;
-     /* Um tom mais escuro de verde */
- }
+.view-more-button:hover {
+    background-color: #6200ea;
+    /* Um tom mais escuro de verde */
+}
 
- .view-more-button:active {
-     background-color: #6200ea;
-     box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.2);
-     transform: scale(0.98);
- }
+.view-more-button:active {
+    background-color: #6200ea;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.2);
+    transform: scale(0.98);
+}
 
- #loader {
-     position: fixed;
-     /* Garante que o loader fique fixo na tela */
-     top: 50%;
-     /* Centraliza verticalmente */
-     left: 50%;
-     /* Centraliza horizontalmente */
-     transform: translate(-50%, -50%);
-     /* Ajusta para que o ponto central do loader esteja no centro da tela */
-     z-index: 1000;
-     /* Garante que o loader fique acima de outros elementos */
- }
+#loader {
+    position: fixed;
+    /* Garante que o loader fique fixo na tela */
+    top: 50%;
+    /* Centraliza verticalmente */
+    left: 50%;
+    /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%);
+    /* Ajusta para que o ponto central do loader esteja no centro da tela */
+    z-index: 1000;
+    /* Garante que o loader fique acima de outros elementos */
+}
 
- .spinner {
-     width: 40px;
-     height: 40px;
-     border: 5px solid rgba(0, 0, 0, 0.1);
-     border-top: 5px solid #6200ea;
-     border-radius: 50%;
-     animation: spin 1s linear infinite;
- }
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-top: 5px solid #6200ea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
 
- @keyframes spin {
-     0% {
-         transform: rotate(0deg);
-     }
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
 
-     100% {
-         transform: rotate(360deg);
-     }
- }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
- .search-bar {
-     position: relative;
-     display: flex;
-     flex-direction: column;
- }
+.search-bar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
 
- #historyDropdown {
-     position: absolute;
-     top: 100%;
-     /* Faz com que a lista apareça abaixo do campo de entrada */
-     left: 0;
-     width: 100%;
-     background-color: white;
-     border: 1px solid #ccc;
-     border-top: none;
-     list-style: none;
-     padding: 0;
-     margin: 0;
-     display: none;
-     max-height: 200px;
-     overflow-y: auto;
-     z-index: 10;
- }
+#historyDropdown {
+    position: absolute;
+    top: 100%;
+    /* Faz com que a lista apareça abaixo do campo de entrada */
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+}
 
- #historyDropdown li {
-     padding: 8px;
-     cursor: pointer;
- }
+#historyDropdown li {
+    padding: 8px;
+    cursor: pointer;
+}
 
- #historyDropdown li:hover {
-     background-color: #f0f0f0;
- }
+#historyDropdown li:hover {
+    background-color: #f0f0f0;
+}
 
- .autocomplete-dropdown {
-     position: absolute;
-     background-color: white;
-     max-height: 150px;
-     overflow-y: auto;
-     z-index: 10;
-     width: 100%;
- }
+.autocomplete-dropdown {
+    position: absolute;
+    background-color: white;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 10;
+    width: 100%;
+}
 
- .autocomplete-suggestion {
-     padding: 10px;
-     cursor: pointer;
- }
+.autocomplete-suggestion {
+    padding: 10px;
+    cursor: pointer;
+}
 
- .autocomplete-suggestion:hover {
-     background-color: #f0f0f0;
- }
+.autocomplete-suggestion:hover {
+    background-color: #f0f0f0;
+}
 
- .clear-history {
-     display: none;
-     /* Oculto por padrão */
-     margin-top: 10px;
-     padding: 8px 12px;
-     background-color: #6200ea;
-     /* Vermelho para chamar atenção */
-     color: white;
-     border: none;
-     border-radius: 4px;
-     cursor: pointer;
-     font-size: 0.9rem;
-     transition: 0.3s;
- }
+.clear-history {
+    display: none;
+    /* Oculto por padrão */
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #6200ea;
+    /* Vermelho para chamar atenção */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
 
- .clear-history:hover {
-     background-color: #4900af;
-     /* Vermelho mais escuro ao passar o mouse */
- }
+.clear-history:hover {
+    background-color: #4900af;
+    /* Vermelho mais escuro ao passar o mouse */
+}
+
+.login-container {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-container h2 {
+    margin-bottom: 15px;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background-color: #4900af;
+}
+
+.back-button {
+    margin-top: 15px;
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.back-button:hover {
+    background-color: #4b00b5;
+}
