@@ -11,19 +11,8 @@
 </head>
 
 <body>
-    <header>
-        <div class="header-container">
-            <!-- Título centralizado -->
-            <div class="header-left">
-                <h1 onclick="location.reload();">MangáNavi</h1>
-                <p>Busque seus mangás favoritos!</p>
-            </div>
-
-            <!-- Botão de Login à direita -->
-            <button id="loginButton" onclick="window.location.href='login.html'">Login</button>
-        </div>
-    </header>
-
+    <div id="header-container"></div>
+    <script src="header.js"></script>
 
     <div class="container">
         <div class="search-bar">
@@ -41,7 +30,10 @@
         </div>
     </div>
 
-    <ul class="results" id="resultsList"></ul>
+    <!-- Adiciona o container para os resultados -->
+    <div class="results-container">
+        <ul class="results" id="resultsList"></ul>
+    </div>
 
     <!-- Carregar o JavaScript após o conteúdo HTML -->
     <script src="app.js"></script>

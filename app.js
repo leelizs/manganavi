@@ -134,6 +134,7 @@ async function searchManga() {
         const query = document.getElementById("searchInput").value.trim().toLowerCase();
         const resultsList = document.getElementById("resultsList");
         const loader = document.getElementById("loader"); // Elemento do loader
+        const resultsContainer = document.querySelector('.results-container'); // Container dos resultados
 
         // Incrementa a versão da consulta
         const currentQueryVersion = ++lastQueryVersion;
@@ -146,6 +147,7 @@ async function searchManga() {
         if (!query) {
             loader.style.display = "none";
             resultsList.innerHTML = "<li>Digite algo para iniciar a busca.</li>";
+            resultsContainer.style.display = "none"; // Esconde o quadrado estilizado
             return;
         }
 
@@ -171,8 +173,12 @@ async function searchManga() {
             if (data.data.length === 0) {
                 loader.style.display = "none";
                 resultsList.innerHTML = "<li>Nenhum mangá encontrado.</li>";
+                resultsContainer.style.display = "none"; // Esconde o quadrado estilizado
                 return;
             }
+
+            // Exibe o quadrado estilizado quando houver resultados
+            resultsContainer.style.display = "flex"; // Exibe o quadrado estilizado
 
             // Limitar resultados ao máximo permitido inicialmente
             const limitedResults = data.data.slice(0, maxResults);
@@ -180,11 +186,11 @@ async function searchManga() {
             // Exibir resultados limitados
             limitedResults.forEach(manga => {
                 const listItem = document.createElement("li");
-                listItem.innerHTML = `
-        <strong><a href="${manga.url}" target="_blank">${manga.title}</a></strong><br>
-        <em>${manga.authors.map(author => author.name).join(", ") || "Autor desconhecido"}</em><br>
-        <p>${manga.synopsis || "Sem descrição disponível."}</p>
-    `;
+                listItem.innerHTML = ` 
+                    <strong><a href="${manga.url}" target="_blank">${manga.title}</a></strong><br>
+                    <em>${manga.authors.map(author => author.name).join(", ") || "Autor desconhecido"}</em><br>
+                    <p>${manga.synopsis || "Sem descrição disponível."}</p>
+                `;
                 resultsList.appendChild(listItem);
             });
 
@@ -203,17 +209,19 @@ async function searchManga() {
                     data.data.forEach(manga => {
                         const listItem = document.createElement("li");
                         listItem.innerHTML = `
-                            <strong>${manga.title}</strong><br>
-                            <em>${manga.authors.map(author => author.name).join(", ") || "Autor desconhecido"}</em><br>
-                            <p>${manga.synopsis || "Sem descrição disponível."}</p>
-                        `;
+            <strong><a href="${manga.url}" target="_blank">${manga.title}</a></strong><br>
+            <em>${manga.authors.map(author => author.name).join(", ") || "Autor desconhecido"}</em><br>
+            <p>${manga.synopsis || "Sem descrição disponível."}</p>
+        `;
                         resultsList.appendChild(listItem);
                     });
                 });
+
             }
         } catch (error) {
             console.error("Erro ao buscar mangás:", error);
             resultsList.innerHTML = "<li>Ocorreu um erro ao buscar os mangás. Tente novamente mais tarde.</li>";
+            resultsContainer.style.display = "none"; // Esconde o quadrado estilizado em caso de erro
         } finally {
             // Ocultar o loader após a busca
             loader.style.display = "none";

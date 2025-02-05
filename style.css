@@ -128,10 +128,25 @@ header p {
     /* Efeito hover no botão */
 }
 
+.results-container {
+    display: none;
+    /* Começa escondido */
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Adiciona sombra */
+}
 
 .results {
     list-style: none;
     padding: 0;
+    width: 100%;
 }
 
 .results li {
@@ -141,11 +156,15 @@ header p {
     border: 1px solid #ddd;
     border-radius: 4px;
     transition: box-shadow 0.3s ease;
+    text-align: center;
+    /* Centraliza o texto dentro dos resultados */
 }
 
 .results li:hover {
-    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* Corrigido para um tom mais visível */
 }
+
 
 .view-more-button {
     background-color: #6200ea;
@@ -276,14 +295,16 @@ header p {
 }
 
 .login-container {
+    margin: 120px auto;
+    /* Adiciona espaçamento suficiente abaixo do header */
     width: 300px;
-    margin: 100px auto;
     padding: 20px;
     text-align: center;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
+
 
 .login-container h2 {
     margin-bottom: 15px;
@@ -311,8 +332,8 @@ header p {
     background-color: #4900af;
 }
 
+/* Estilização do botão de Voltar ao Início no header */
 .back-button {
-    margin-top: 15px;
     background-color: #6200ea;
     color: white;
     border: none;
@@ -320,8 +341,6 @@ header p {
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
-    display: block;
-    width: 100%;
     text-align: center;
 }
 
