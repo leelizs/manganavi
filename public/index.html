@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MangáNavi</title>
+
+    <!-- Links de estilos -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header (carregado dinamicamente) -->
+    <div id="header-container"></div>
+    <script src="header.js"></script>
+
+    <div class="container">
+        <!-- Barra de pesquisa -->
+        <div class="search-bar" onclick="focusSearch()">
+            <i class="fas fa-search"></i> <!-- Ícone da lupa -->
+            <input type="text" id="searchInput" placeholder="Digite o nome do mangá..." oninput="searchManga()"
+                autocomplete="off">
+            <ul id="historyDropdown" class="dropdown"></ul>
+
+            <!-- Container de sugestões de autocomplete -->
+            <div id="autocompleteContainer" class="autocomplete-dropdown"></div>
+        </div>
+    </div>
+
+    <!-- Loader/Spinner -->
+    <div id="loader" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+    </div>
+
+    <!-- Modal de Opções -->
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <h2>O que deseja fazer?</h2>
+            <p>Escolha uma opção abaixo:</p>
+
+            <div class="modal-buttons">
+                <button id="settingsButton" class="settings-button">⚙️ Configurações</button>
+                <button id="logoutButton" class="confirm-button">🚪 Sair</button>
+            </div>
+
+            <button id="cancelButton" class="cancel-button">❌ Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Modal de Configurações -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <h2>Configurações</h2>
+            <p>Personalize sua experiência:</p>
+
+            <div class="modal-buttons">
+                <button id="toggleDarkMode" class="settings-button">🌙 Modo Escuro</button>
+                <button id="clearHistoryButton" class="settings-button">🗑 Limpar Histórico</button>
+            </div>
+
+            <button id="closeSettingsButton" class="cancel-button">❌ Fechar</button>
+        </div>
+    </div>
+
+    <!-- Container para os resultados da busca -->
+    <div class="results-container">
+        <ul class="results" id="resultsList"></ul>
+    </div>
+
+    <!-- Carregar o JavaScript -->
+    <script src="app.js"></script>
+</body>
+
+</html>

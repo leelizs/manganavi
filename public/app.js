@@ -29,14 +29,13 @@ function updateHistory() {
     dropdown.innerHTML = "";
     autocomplete.innerHTML = ""; // Limpar sugestões
 
-    // Se o campo estiver vazio, escondemos o histórico e autocompletar
     if (!query) {
         dropdown.style.display = "none";
         autocomplete.style.display = "none";
         return;
     }
 
-    // Exibir apenas o histórico se não houver correspondência no autocomplete
+    // Filtrar histórico para exibir somente correspondências
     const filteredHistory = history.filter(item => item.toLowerCase().startsWith(query));
     if (filteredHistory.length > 0) {
         filteredHistory.forEach((item) => {
@@ -51,22 +50,14 @@ function updateHistory() {
             dropdown.appendChild(li);
         });
         dropdown.style.display = "block";
-        autocomplete.style.display = "none";
     } else {
         dropdown.style.display = "none";
     }
+
 }
 
-// Esconder o dropdown e autocomplete ao perder o foco
-document.getElementById("searchInput").addEventListener("blur", () => {
-    setTimeout(() => {
-        document.getElementById("historyDropdown").style.display = "none";
-        document.getElementById("autocompleteContainer").style.display = "none";
-    }, 200);
-});
-
-// Mostrar o histórico completo quando o campo de pesquisa ganha foco
 // Função para mostrar o histórico quando o usuário clica no campo de pesquisa
+
 function showHistory() {
     const searchInput = document.getElementById("searchInput");
     const dropdown = document.getElementById("historyDropdown");
@@ -83,49 +74,41 @@ function showHistory() {
                 searchInput.value = item;
                 searchManga();
                 dropdown.style.display = "none";
-                clearButton.style.display = "none"; // Esconder botão ao selecionar um item
             });
             dropdown.appendChild(li);
         });
 
         dropdown.style.display = "block";
-        clearButton.style.display = "block"; // Exibir botão somente quando histórico for mostrado
+
     } else {
         dropdown.style.display = "none";
-        clearButton.style.display = "none"; // Esconder botão se não houver histórico
     }
 }
 
 // Função para limpar o histórico
 function clearSearchHistory() {
-    localStorage.removeItem("searchHistory"); // Remove o histórico do localStorage
-    document.getElementById("historyDropdown").innerHTML = ""; // Limpa a lista visível
-    showHistory(); // Reexibe o histórico atualizado sem o botão
-}
+    if (getHistory().length === 0) {
+        alert("Não há histórico a ser limpo");
+        return;
+    }
 
+    localStorage.removeItem("searchHistory"); // Remove o histórico
+    document.getElementById("historyDropdown").innerHTML = ""; // Limpa a lista visível
+
+    // 🔴 Deixe o botão visível mesmo após limpar o histórico
+    document.getElementById("clearHistoryButton").style.display = "block";
+}
 
 // Esconder o dropdown e o botão ao perder o foco
 document.getElementById("searchInput").addEventListener("blur", () => {
     setTimeout(() => {
         document.getElementById("historyDropdown").style.display = "none";
-        document.getElementById("clearHistoryButton").style.display = "none";
     }, 200);
 });
 
-// Ao carregar a página, garantir que o botão NÃO apareça
-document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("clearHistoryButton").style.display = "none";
-});
 
-// Mostrar ou ocultar o botão de limpar histórico conforme necessário
-function updateClearHistoryButton() {
-    const history = getHistory();
-    const clearButton = document.getElementById("clearHistoryButton");
-    if (history.length > 0) {
-        clearButton.style.display = "block"; // Exibir botão se houver histórico
-    } else {
-        clearButton.style.display = "none"; // Esconder botão se não houver histórico
-    }
+function focusSearch() {
+    document.getElementById("searchInput").focus();
 }
 
 async function searchManga() {

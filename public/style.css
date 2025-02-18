@@ -39,7 +39,7 @@ header h1 {
     /* Adiciona espaçamento entre as letras */
     text-transform: uppercase;
     /* Deixa o título em maiúsculas */
-    cursor: pointer;
+
 }
 
 header p {
@@ -88,7 +88,6 @@ header p {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    /* Espaço entre input e botão */
     padding: 0.5rem;
     background-color: white;
     border: 1px solid #ddd;
@@ -96,36 +95,48 @@ header p {
     box-shadow: 0 2px 5px white;
     width: 100%;
     max-width: 800px;
-    margin-bottom: 1rem;
+    height: 63px;
+    /* Defina a altura fixa para garantir alinhamento */
+    cursor: pointer;
+}
+
+.search-bar .fas.fa-search {
+    font-size: 1.5rem;
+    color: #6200ea;
+    margin-left: 10px;
+    /* Ajuste para melhor espaçamento */
 }
 
 .search-bar input {
-    flex: 1;
-    padding: 0.5rem;
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    /* Faz o input ocupar toda a altura da barra */
     border: none;
     outline: none;
     font-size: 1rem;
+    padding: 0 10px;
+    /* Ajusta o espaçamento interno */
+    background: transparent;
+    /* Mantém o fundo igual ao da barra */
 }
 
-.search-button {
+.search-bar button {
     background-color: #6200ea;
-    /* Cor do botão */
     border: none;
     padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
     transition: 0.3s;
+    display: none;
 }
 
-.search-button i {
-    font-size: 1.2rem;
-    color: white;
-    /* Ícone branco para contraste */
-}
-
-.search-button:hover {
+.search-bar button:hover {
     background-color: #4b00b5;
-    /* Efeito hover no botão */
+}
+
+.search-bar:focus-within button {
+    display: block;
 }
 
 .results-container {
@@ -245,6 +256,8 @@ header p {
     max-height: 200px;
     overflow-y: auto;
     z-index: 10;
+    margin-bottom: 40px;
+    /* Garante espaço para o botão */
 }
 
 #historyDropdown li {
@@ -272,26 +285,6 @@ header p {
 
 .autocomplete-suggestion:hover {
     background-color: #f0f0f0;
-}
-
-.clear-history {
-    display: none;
-    /* Oculto por padrão */
-    margin-top: 10px;
-    padding: 8px 12px;
-    background-color: #6200ea;
-    /* Vermelho para chamar atenção */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: 0.3s;
-}
-
-.clear-history:hover {
-    background-color: #4900af;
-    /* Vermelho mais escuro ao passar o mouse */
 }
 
 .login-container {
@@ -346,4 +339,269 @@ header p {
 
 .back-button:hover {
     background-color: #4b00b5;
+}
+
+/* Estilos padrão da modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    right: 20px;
+    top: 20px;
+    width: 320px;
+    background: rgba(120, 81, 169, 0.2);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 8px 32px rgba(120, 81, 169, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.modal-content {
+    background: rgba(85, 44, 130, 0.8);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: white;
+}
+
+/* Classe para exibir a modal */
+.modal.show {
+    display: block;
+}
+
+/* Botões */
+.cancel-button,
+.confirm-button,
+.settings-button {
+    padding: 12px;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.settings-button {
+    background: #6A0DAD;
+    color: white;
+}
+
+.confirm-button {
+    background: #8E44AD;
+    color: white;
+}
+
+.cancel-button {
+    background: #5E3370;
+    color: white;
+}
+
+.cancel-button:hover,
+.confirm-button:hover,
+.settings-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ================= DARK MODE ================= */
+.dark-mode {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+}
+
+/* ======== MODAIS ======== */
+.dark-mode .modal-content {
+    background: rgba(40, 40, 40, 0.9);
+    border: 1px solid #444;
+}
+
+/* ======== BOTÕES GERAIS ======== */
+.dark-mode .settings-button,
+.dark-mode .confirm-button,
+.dark-mode .cancel-button {
+    background: #333;
+    color: #f5f5f5;
+    border: 1px solid #444;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.dark-mode .settings-button:hover,
+.dark-mode .confirm-button:hover,
+.dark-mode .cancel-button:hover {
+    background: #444;
+}
+
+/* ======== FORMULÁRIOS ======== */
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+    background-color: #333;
+    color: #f5f5f5;
+    border: 1px solid #444;
+}
+
+.dark-mode input:focus,
+.dark-mode textarea:focus,
+.dark-mode select:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* ======== LINKS ======== */
+.dark-mode a {
+    color: #1e90ff;
+}
+
+.dark-mode a:hover {
+    text-decoration: underline;
+}
+
+/* ================= SEARCH BAR ================= */
+.dark-mode .search-bar {
+    background-color: #2a2a2a;
+    border: none !important;
+    box-shadow: none;
+}
+
+.dark-mode .autocomplete-dropdown {
+    background-color: #2a2a2a;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* INPUT DA SEARCH BAR */
+.dark-mode .search-bar input {
+    background-color: transparent;
+    color: #f5f5f5;
+    border: none;
+    outline: none;
+}
+
+/* PLACEHOLDER DO INPUT */
+.dark-mode .search-bar input::placeholder {
+    color: #bbb;
+}
+
+/* ÍCONE DA LUPA */
+.dark-mode .search-bar .fas.fa-search {
+    color: #bbb;
+}
+
+/* DROPDOWN DO HISTÓRICO */
+.dark-mode .dropdown,
+.dark-mode #historyDropdown,
+.dark-mode #autocompleteContainer {
+    background-color: #2a2a2a;
+    color: #f5f5f5;
+    border: 1px solid #444;
+}
+
+/* ITENS DO DROPDOWN */
+.dark-mode .dropdown li,
+.dark-mode #historyDropdown li,
+.dark-mode #autocompleteContainer div {
+    background-color: #2a2a2a;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+    cursor: pointer;
+}
+
+.dark-mode .dropdown li:hover,
+.dark-mode #historyDropdown li:hover,
+.dark-mode #autocompleteContainer div:hover {
+    background-color: #444;
+}
+
+/* BOTÃO DE LIMPAR HISTÓRICO */
+.dark-mode .clear-history {
+    background-color: #6200ea;
+    color: #fff;
+    border: none;
+}
+
+.dark-mode .clear-history:hover {
+    background-color: #4b00b5;
+}
+
+/* ================= LOGIN & CADASTRO ================= */
+.dark-mode .login-container {
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* TÍTULOS */
+.dark-mode .login-container h2 {
+    color: #f5f5f5;
+}
+
+/* INPUTS DO LOGIN/CADASTRO */
+.dark-mode .login-container input {
+    background-color: #333;
+    color: #f5f5f5;
+    border: 1px solid #555;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* PLACEHOLDER DOS INPUTS */
+.dark-mode .login-container input::placeholder {
+    color: #bbb;
+}
+
+/* INPUTS AO FOCAR */
+.dark-mode .login-container input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* BOTÕES */
+.dark-mode .login-container button {
+    background-color: #6200ea;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dark-mode .login-container button:hover {
+    background-color: #4b00b5;
+}
+
+/* LINKS DO LOGIN/CADASTRO */
+.dark-mode .login-container a {
+    color: #1e90ff;
+}
+
+.dark-mode .login-container a:hover {
+    text-decoration: underline;
+}
+
+.dark-mode .results-container {
+    background-color: #222;
+    /* Fundo mais escuro */
+    color: #fff;
+    /* Texto claro */
+    border: 1px solid #444;
+    /* Borda sutil */
+}
+
+.dark-mode .results li {
+    background-color: #333;
+    /* Fundo dos itens */
+    color: #fff;
+    border-bottom: 1px solid #444;
+}
+
+.dark-mode .results li:hover {
+    background-color: #444;
+    /* Efeito de hover */
 }

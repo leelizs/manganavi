@@ -1,0 +1,32 @@
+<header>
+    <div class="header-container">
+        <div class="header-left">
+            <h1 onclick="location.href='index.html'">MangáNavi</h1>
+            <p>Busque seus mangás favoritos!</p>
+        </div>
+
+        <!-- Botão dinâmico que será alterado via JavaScript -->
+        <button id="header-button" onclick="window.location.href='login.html'">Login</button>
+    </div>
+</header>
+
+<script>
+    // Garantir que o DOM esteja completamente carregado
+    window.onload = function () {
+        // Verifica se o usuário está logado (ou seja, se o token e o nome estão no localStorage)
+        const token = localStorage.getItem("token");
+        const username = localStorage.getItem("username");
+
+        if (token && username) {
+            // Se o usuário estiver logado, substitui o botão "Login" pelo nome do usuário
+            const headerButton = document.getElementById("header-button");
+            headerButton.textContent = username;  // Exibe o nome do usuário no botão
+            headerButton.onclick = function () {
+                // Função de logout
+                localStorage.removeItem("token");
+                localStorage.removeItem("username");
+                window.location.href = "index.html"; // Redireciona para a página inicial após logout
+            };
+        }
+    };
+</script>
